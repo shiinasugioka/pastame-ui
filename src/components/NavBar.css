@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.navbar {
+    position: relative;
+    font-family: 'Fredoka One', cursive;
+    color: #FFBD13;
+}
+
+.green-circle {
+    position: absolute;
+    z-index: -1;
+    width: 100px;
+    height: 100px;
+    background-color: #104D0A;
+    border-radius: 50%;
+}
+
+.navbar__menu {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__menu.open {
+    transform: scale(1.2);
+}
+
+.navbar__hamburger {
+    cursor: pointer;
+}

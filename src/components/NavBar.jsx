@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HamburgerIcon from '../assets/PastaBurger.svg';
+import './NavBar.css';
+
+// const GreenCircle = ({ children }) => {
+//     return (
+//         <div className="green-circle">
+//             {children}
+//         </div>
+//     );
+// };
 
 const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <nav className="navbar">
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <a href="/" className="nav-link">Pasta ME</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/about" className="nav-link">About Us</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/mission" className="nav-link">Our Mission</a>
-                </li>
-            </ul>
+            <div className="navbar__logo">
+                <h1>PastaMe</h1>
+            </div>
+            {isOpen && (
+                <div className={`navbar__menu ${isOpen ? 'open' : ''}`}>
+                    <ul>
+                        <li>About Us</li>
+                        <li>Our Mission</li>
+                    </ul>
+                </div>
+            )}
+            <div className="navbar__hamburger" onClick={toggleMenu}>
+                <img src={HamburgerIcon} alt="Hamburger Icon" />
+            </div>
         </nav>
     );
 };
