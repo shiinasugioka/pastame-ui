@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./GeneratedRecipesPage.css";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
 
 function GeneratedRecipesPage() {
   const [recipes, setRecipes] = useState();
@@ -42,10 +43,10 @@ function GeneratedRecipesPage() {
       {isBusy ? (
         <Spinner />
       ) : (
-        <>
+        <section className="recipe-grid">
           <h2>Choose your pasta recipe!</h2>
-          <section className="recipe-grid">
-            {recipes &&
+          <div>
+            {recipes && recipes.length > 0 ? (
               recipes.map(({ recipe }) => {
                 return (
                   <RecipeCard
@@ -55,9 +56,26 @@ function GeneratedRecipesPage() {
                     url={recipe.url}
                   />
                 );
-              })}
-          </section>
-        </>
+              })
+            ) : (
+              <div
+                className="empty-state"
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <img src="images/empty.png" alt="boiling pasta" />
+                <p>Hmm... try another set of ingredients</p>
+                <Link to="/photoUpload">
+                  <button className="submit-btn">Go back</button>
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
       )}
     </>
   );

@@ -1,0 +1,43 @@
+.empty-state img {
+  max-width: 200px;
+}
+
+.empty-state p {
+  color: gray;
+  font-size: 16px;
+  line-height: 1.4rem;
+  margin-top: .8rem;
+}
+
+.recipe-grid {
+  margin-top: 7rem;
+  color: white;
+  font-family: "Fredoka", sans-serif;
+}
+
+.recipe-grid h2 {
+  margin-bottom: 1.2rem;
+}
+
+.recipe-grid a {
+  text-decoration: none;
+}
+
+article {
+  font-family: "Chivo", sans-serif;
+  font-size: 1.2rem;
+  color: #000;
+  background-color: white;
+  margin: 1rem .8rem;
+  padding: 1.8rem .85rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px #20202036;
+}
+
+article img {
+  margin-bottom: .85rem;
+}
+
+article p {
+  margin: 0;
+}

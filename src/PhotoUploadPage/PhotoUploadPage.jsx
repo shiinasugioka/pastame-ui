@@ -5,10 +5,12 @@ import { BiSolidTrash } from "react-icons/bi";
 import ImageUploading from "react-images-uploading";
 // import { QueryContext } from "../App";
 import "./PhotoUploadPage.css";
+import Spinner from "../components/Spinner";
 
 function PhotoUploadPage() {
   const maxNumber = 10;
   const [file, setFile] = useState([]);
+  const [isBusy, setBusy] = useState(false);
   // const { query, setQuery } = useContext(QueryContext);
 
   const onChange = (imageList, addUpdateIndex) => {
@@ -22,18 +24,18 @@ function PhotoUploadPage() {
       formData.append(`imgfile`, f.file);
     });
     try {
-      const response = await axios.post(
-        "http://localhost:8080/upload",
-        formData
-      );
+      setBusy(true);
+      await axios.post("http://localhost:8080/upload", formData).then((res) => {
+        let queryStr = JSON.stringify(res.data);
+        console.log("Response:", queryStr.slice(1, queryStr.length - 1));
 
-      let queryStr = JSON.stringify(response.data);
-      console.log("Response:", queryStr.slice(1, queryStr.length - 1));
-
-      // setQuery(queryStr.slice(1, queryStr.length - 1));
-
-      window.sessionStorage.setItem("query", queryStr.slice(1, queryStr.length - 1).replace(/"/g, ""));
-      window.location.href = "/recipe";
+        window.sessionStorage.setItem(
+          "query",
+          queryStr.slice(1, queryStr.length - 1).replace(/"/g, "")
+        );
+        window.location.href = "/recipe";
+        setBusy(false);
+      });
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -106,12 +108,18 @@ function PhotoUploadPage() {
 
   return (
     <>
-      <p className="inst-text">
-        Please upload an image of each of your ingredients separately below.
-      </p>
+      {isBusy ? (
+        <Spinner />
+      ) : (
+        <div>
+          <p className="inst-text">
+            Please upload an image of each of your ingredients separately below.
+          </p>
 
-      {imageUploadBtn()}
-      {submitBtn()}
+          {imageUploadBtn()}
+          {submitBtn()}
+        </div>
+      )}
     </>
   );
 }
