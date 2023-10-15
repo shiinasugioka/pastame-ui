@@ -33,12 +33,12 @@ const NavBar = ({ onMenuOpen, onMenuClose, setIsLanding }) => {
         </div>
       )}
 
-      <div
+      <Link to='/'
         className={`navbar__logo ${isOpen ? "move-left" : ""}`}
         onClick={closeMenu}
       >
         PastaMe
-      </div>
+      </Link>
 
       {isOpen && (
         <div className={`navbar__menu ${isOpen ? "open" : ""}`}>

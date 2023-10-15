@@ -48,8 +48,6 @@ function PhotoUploadPage() {
         {({
           imageList,
           onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
           onImageRemove,
           isDragging,
           dragProps,
