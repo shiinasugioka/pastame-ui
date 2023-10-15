@@ -30,7 +30,7 @@ const App = () => {
         />
         <Route
           path="/recipe"
-          element={<GeneratedRecipesPage file={file} setFile={setFile} />}
+          element={<GeneratedRecipesPage />}
         />
         <Route path="/about" element={<HomePage />} />
         <Route path="/mission" element={<HomePage />} />

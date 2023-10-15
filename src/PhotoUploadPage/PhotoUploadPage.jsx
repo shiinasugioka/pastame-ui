@@ -1,5 +1,6 @@
 import "./PhotoUploadPage.css";
 import ImageUploading from "react-images-uploading";
+import axios from "axios";
 
 function PhotoUploadPage({ file, setFile }) {
   const maxNumber = 10;
@@ -19,7 +20,7 @@ function PhotoUploadPage({ file, setFile }) {
         "http://localhost:8080/upload",
         formData
       );
-      console.log("Response:", response.data);
+      console.log("Response:", response);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -75,6 +76,11 @@ function PhotoUploadPage({ file, setFile }) {
           </div>
         )}
       </ImageUploading>
+      <div>
+        <button id="submit-btn" onClick={onUpload}>
+          Start Cooking
+        </button>
+      </div>
     </>
   );
 }
