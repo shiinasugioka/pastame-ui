@@ -13,10 +13,8 @@ image.source.image_uri = image_url
 
 response = client.label_detection(image=image)
 
-highest = {'label': '', 'score': 0}
-for label in response.label_annotations:
-    # print({'label': label.description, 'score': label.score})
-    if label.score > highest['score']:
-        highest = {'label': label.description, 'score': label.score}
+labels = [{'label': label.description, 'score': label.score} for label in response.label_annotations]
 
-print(highest['label'])
+top_5 = sorted(labels, key=lambda x: x['score'], reverse=True)[:5]
+for item in top_5:
+    print(item)
