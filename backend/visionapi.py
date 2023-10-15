@@ -15,6 +15,6 @@ response = client.label_detection(image=image)
 
 labels = [{'label': label.description, 'score': label.score} for label in response.label_annotations]
 
-top_5 = sorted(labels, key=lambda x: x['score'], reverse=True)[:5]
+top_5 = sorted(labels, key=lambda x: x['score'], reverse=True)[2:3]
 for item in top_5:
     print(item)

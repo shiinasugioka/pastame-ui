@@ -1,14 +1,15 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+// import { useContext, useState } from "react";
+import { useState } from "react";
 import { BiSolidTrash } from "react-icons/bi";
 import ImageUploading from "react-images-uploading";
-import { QueryContext } from "../App";
+// import { QueryContext } from "../App";
 import "./PhotoUploadPage.css";
 
 function PhotoUploadPage() {
   const maxNumber = 10;
   const [file, setFile] = useState([]);
-  const { setQuery } = useContext(QueryContext);
+  // const { query, setQuery } = useContext(QueryContext);
 
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
@@ -29,7 +30,10 @@ function PhotoUploadPage() {
       let queryStr = JSON.stringify(response.data);
       console.log("Response:", queryStr.slice(1, queryStr.length - 1));
 
-      setQuery(queryStr.slice(1, queryStr.length - 1));
+      // setQuery(queryStr.slice(1, queryStr.length - 1));
+
+      window.sessionStorage.setItem("query", queryStr.slice(1, queryStr.length - 1).replace(/"/g, ""));
+      window.location.href = "/recipe";
     } catch (error) {
       console.error("Error uploading file:", error);
     }
