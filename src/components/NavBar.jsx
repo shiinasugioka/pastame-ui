@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import HamburgerIcon from '../assets/PastaBurger.svg';
 import './NavBar.css';
 
-// const GreenCircle = ({ children }) => {
-//     return (
-//         <div className="green-circle">
-//             {children}
-//         </div>
-//     );
-// };
+
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);

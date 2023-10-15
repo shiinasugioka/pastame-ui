@@ -1,21 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .navbar {
-    position: relative;
+    position: relative; /* Make sure this is relative */
     font-family: 'Fredoka One', cursive;
     color: #FFBD13;
-}
-
-.green-circle {
-    position: absolute;
-    z-index: -1;
-    width: 100px;
-    height: 100px;
-    background-color: #104D0A;
-    border-radius: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar__menu {
+    position: absolute; /* Add this */
+    top: 100%; /* Add this */
+    left: 0; /* Add this */
     transition: all 0.3s ease-in-out;
 }
 
