@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "reactstrap";
 import "./LandingPage.css";
-import PhotoUploadPage from "../PhotoUploadPage/PhotoUploadPage";
 
 const getKitchenBackground = () => {
   return (
@@ -45,31 +44,37 @@ const getKitchenBackground = () => {
 };
 
 function LandingPage() {
-  const [file, setFile] = useState(null);
-
-  const onUpload = async () => {
-    const formData = new FormData();
-    file.forEach((f) => {
-      formData.append(`imgfile`, f.file);
-    });
-    try {
-      const response = await axios.post("http://localhost:8080/upload", formData);
-      console.log("Response:", response.data);
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
-
   return (
     <>
-      <div className="card">
-        <div>
-          <button id="submit-btn" onClick={onUpload}>
-            Start Cooking
-          </button>
+      {getKitchenBackground()}
+
+      <Button className="LogoBtn">
+        PastaMe
+        <img src="../../public/images/pasta-logo.png" className="pasta-logo" />
+      </Button>
+
+      <div className="text-container">
+        <p className="header-textbox">How to use</p>
+
+        <div className="row-container">
+          <p className="one number">1</p>
+          <p className="row-text">Upload photos of your ingredients</p>
         </div>
-        <PhotoUploadPage file={file} setFile={setFile} />
+
+        <div className="row-container">
+          <p className="row-text row-text-two">
+            Get recommended recipes based on your available ingredients
+          </p>
+          <p className="two number">2</p>
+        </div>
+
+        <div className="row-container">
+          <p className="three number">3</p>
+          <p className="row-text">Pick your recipe and Cook!</p>
+        </div>
       </div>
+
+      <Button className="StartBtn">Start Cooking!</Button>
     </>
   );
 }
