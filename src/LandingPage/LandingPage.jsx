@@ -55,7 +55,7 @@ function LandingPage({ setIsLanding }) {
 
       <Button className="LogoBtn">
         PastaMe
-        <img src="../../public/images/pasta-logo.png" className="pasta-logo" />
+        <img src="images/pasta-logo.png" className="pasta-logo" />
       </Button>
 
       <div className="text-container">
