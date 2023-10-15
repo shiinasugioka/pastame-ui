@@ -67,6 +67,8 @@ Want to run the code locally? Follow these steps:
 
 ## Contributors
 
+![PastaMe Commit history](https://github.com/shiinasugioka/pastame-ui/blob/main/GithubCOmmits.jpg)
+
 Built by:
 - Shiina Sugioka
 - Audrey Kho
