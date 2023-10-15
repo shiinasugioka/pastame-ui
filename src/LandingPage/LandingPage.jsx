@@ -1,18 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 import "./LandingPage.css";
+import PhotoUploadPage from "../PhotoUploadPage/PhotoUploadPage";
 
 function LandingPage() {
   const [count, setCount] = useState(0);
   const [file, setFile] = useState(null);
 
   const onFileChange = (e) => {
+    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
 
   const onUpload = async () => {
     const formData = new FormData();
-    formData.append("imgfile", file);
+    formData.append("imgfile", file.map(i => i.file));
 
     try {
       const response = await axios.post("http://localhost:8080/upload", formData);
@@ -34,6 +36,7 @@ function LandingPage() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+        <PhotoUploadPage file={file} setFile={setFile}/>
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>

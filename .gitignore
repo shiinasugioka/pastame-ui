@@ -25,3 +25,6 @@ dist-ssr
 
 visionapi.json
 package-lock.json
+# dotenv environment variables file
+.env
+.env.test
