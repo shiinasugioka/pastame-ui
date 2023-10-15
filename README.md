@@ -2,7 +2,7 @@
 
 PastaMe is a web app that helps you cook delicious pasta dishes with whatever ingredients you have on hand. No more compromised pasta nights or wasting food!
 
-![PastaMe Demo](https://github.com/shiinasugioka/pastame-ui/blob/main/PastaMe4.png)
+<img src="./public/images/PastaMe_demo_gif.gif" alt="demo gif">
 
 ## Inspiration
 
