@@ -1,0 +1,126 @@
+html,
+body {
+  padding: 0;
+  font-family: "Chivo", sans-serif;
+  color: #104d0a;
+}
+
+.upload__image-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.inst-text {
+  color: white;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.upload-btn {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px 20px 20px 20px;
+  border: none;
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 150, "GRAD" 0, "opsz" 24;
+  color: #818181;
+  font-size: 140px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.upload-btn-text {
+  color: #818181;
+  position: absolute;
+  width: 200px;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.material-symbols-outlined-remove {
+  font-variation-settings: "FILL" 0, "wght" 150, "GRAD" 0, "opsz" 24;
+  color: #818181;
+  font-size: 30px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.yourIngredients {
+  font-size: 20px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #104d0a;
+  font-weight: bold;
+}
+
+.resulting-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  border-radius: 10px 10px 10px 10px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.image-btn {
+  margin-top: 5px;
+  border: none;
+  background-color: #eb5c5c;
+  border-radius: 20px 20px 20px 20px;
+  width: 40px;
+  height: 40px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+.submit-btn {
+  /* text */
+  font-family: "Fredoka", sans-serif;
+  color: #ffbd13;
+  font-size: 20px;
+
+  /* button */
+  border-radius: 50px 50px 50px 50px;
+  border: none;
+  width: 180px;
+  height: 40px;
+  background-color: #104d0a;
+  box-shadow: 0px 3px 6px #17171765;
+
+  margin: 0;
+  margin-bottom: 20px;
+}
