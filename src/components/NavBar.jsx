@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HamburgerIcon from "../assets/PastaBurger.svg";
-import logo from "../assets/logo.svg";
 import HomeIcon from "../assets/home.svg";
 import AboutUsIcon from "../assets/about.svg";
 import MissionIcon from "../assets/mission.svg";

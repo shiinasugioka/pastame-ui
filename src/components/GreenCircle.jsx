@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import "./GreenCircle.css"; // Import the CSS
 
