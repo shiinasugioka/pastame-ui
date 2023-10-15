@@ -19,6 +19,7 @@ const App = () => {
         <NavBar
           onMenuOpen={() => setCircleState(4)}
           onMenuClose={() => setCircleState(0)}
+          setIsLanding={setIsLanding}
         />
       )}
       {!isLanding && <GreenCircle state={circleState} />}
