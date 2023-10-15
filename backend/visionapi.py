@@ -1,4 +1,5 @@
 import os
+import sys
 from google.cloud import vision
 from google.cloud import vision_v1 as vision
 
@@ -6,8 +7,9 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'visionapi.json'
 
 client = vision.ImageAnnotatorClient()
 
+image_url = sys.argv[1]
 image = vision.types.Image()
-image.source.image_uri = 'https://storage.googleapis.com/pastame/pasta.jpg'
+image.source.image_uri = image_url
 
 response = client.label_detection(image=image)
 
