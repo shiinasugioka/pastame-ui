@@ -51,13 +51,21 @@
     left: 0;
     margin-left: 10px;
 }
+.navbar__menu{
+    zIndex: 10;
+    
+}
 
 .navbar__menu ul {
+    zIndex: 3;
+    
     list-style-type: none; /* Remove bullet points */
     padding: 0;
     margin: 0;
     margin-top: 30px; /* Add space at the top */
     margin-right: -150px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    backdrop-filter: blur(5px); /* Add background blur */
 }
 /* .navbar__menu ul li img{
     padding-right: 10px;
@@ -71,10 +79,12 @@
     align-items: center; /* Center items vertically */
     padding: 10px; /* Space out list elements */
     color: #FFBD13; /* Change text color to yellow */
+    
 }
 
 .navbar__menu li img {
     margin-right: 10px; /* Add some space between the image and the text */
+    
 }
 
 

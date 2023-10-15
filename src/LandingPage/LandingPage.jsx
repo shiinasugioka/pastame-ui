@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "reactstrap";
 import "./LandingPage.css";
+import { Link } from "react-router-dom";
 
 const getKitchenBackground = () => {
   return (
@@ -74,7 +75,9 @@ function LandingPage() {
         </div>
       </div>
 
+    <Link to="/home">
       <Button className="StartBtn">Start Cooking!</Button>
+      </Link>
     </>
   );
 }

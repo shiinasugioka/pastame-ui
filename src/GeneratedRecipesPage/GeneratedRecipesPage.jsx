@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import React, { useState } from "react";
 import "./GeneratedRecipesPage.css";
+import PhotoUploadPage from "../PhotoUploadPage/PhotoUploadPage.jsx";
 
 function GeneratedRecipesPage() {
+  
   const [file, setFile] = useState(null);
 
   const onUpload = async () => {
