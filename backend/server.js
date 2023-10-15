@@ -4,6 +4,7 @@ import multer from "multer";
 import cors from "cors";
 import { Storage } from "@google-cloud/storage";
 import { exec } from "child_process";
+import { v4 } from "uuid";
 
 const app = express();
 app.use(cors());
@@ -32,12 +33,13 @@ app.get("/", (req, res) => {
 
 app.post("/upload", upload.single("imgfile"), (req, res) => {
   console.log("uploading");
+  const randomId = v4();
   try {
     if (!req.file) {
       res.status(400).send("No file uploaded.");
       return;
     } else {
-      let blob = bucket.file(req.file.originalname);
+      let blob = bucket.file(req.file.originalname + "-" + randomId);
       let blobStream = blob.createWriteStream();
       console.log("Bucket info: ", bucket.name, blob.name);
       blobStream.on("error", (err) => {
@@ -54,10 +56,6 @@ app.post("/upload", upload.single("imgfile"), (req, res) => {
           console.log(`VisionAPI Output: ${stdout}`);
           res.status(200).send("Success");
         });
-
-        // let publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
-        // res.status(200).send(publicUrl);
-        // res.status(200).send("Success");
       });
       blobStream.end(req.file.buffer);
     }
