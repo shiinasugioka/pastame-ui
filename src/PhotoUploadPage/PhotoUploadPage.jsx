@@ -1,9 +1,13 @@
-import "./PhotoUploadPage.css";
-import ImageUploading from "react-images-uploading";
 import axios from "axios";
+import { useContext, useState } from "react";
+import ImageUploading from "react-images-uploading";
+import "./PhotoUploadPage.css";
+import { QueryContext } from "../App";
 
-function PhotoUploadPage({ file, setFile }) {
+function PhotoUploadPage() {
   const maxNumber = 10;
+  const [file, setFile] = useState([]);
+  const { setQuery } = useContext(QueryContext);
 
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
@@ -20,7 +24,11 @@ function PhotoUploadPage({ file, setFile }) {
         "http://localhost:8080/upload",
         formData
       );
-      console.log("Response:", response);
+
+      let queryStr = JSON.stringify(response.data);
+      console.log("Response:", queryStr.slice(1, queryStr.length - 1));
+
+      setQuery(queryStr.slice(1, queryStr.length - 1));
     } catch (error) {
       console.error("Error uploading file:", error);
     }
