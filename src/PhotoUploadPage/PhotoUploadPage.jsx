@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import ImageUploading from "react-images-uploading";
 import { BiSolidTrash } from "react-icons/bi";
 import { LiaRedoAltSolid } from "react-icons/lia";
+import axios from "axios";
 
 function PhotoUploadPage({ file, setFile }) {
   const maxNumber = 10;
