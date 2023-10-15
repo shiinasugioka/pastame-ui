@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import axios from "axios";
 import { useContext, useState } from "react";
-import ImageUploading from "react-images-uploading";
-import "./PhotoUploadPage.css";
-import { QueryContext } from "../App";
-=======
-import "./PhotoUploadPage.css";
-import { Grid } from "@mui/material";
-import ImageUploading from "react-images-uploading";
 import { BiSolidTrash } from "react-icons/bi";
-import { LiaRedoAltSolid } from "react-icons/lia";
-import axios from "axios";
->>>>>>> main
+import ImageUploading from "react-images-uploading";
+import { QueryContext } from "../App";
+import "./PhotoUploadPage.css";
 
 function PhotoUploadPage() {
   const maxNumber = 10;
