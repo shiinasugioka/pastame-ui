@@ -1,7 +1,6 @@
 html,
 body {
   padding: 0;
-  background-color: #ffffff;
   font-family: "Chivo", sans-serif;
   color: #104d0a;
   position: relative;
@@ -26,7 +25,7 @@ body {
   width: 300px;
   height: 60px;
   background-color: #104d0a;
-  box-shadow: 0px 2px 1px #939393;
+  box-shadow: 0px 6px 12px #17171765;
 
   position: absolute;
   top: 310px;
@@ -110,7 +109,7 @@ body {
   width: 370px;
   height: 60px;
   background-color: #ffbd13;
-  box-shadow: 0px 2px 1px #939393;
+  box-shadow: 0px 6px 12px #17171765;
 
   position: absolute;
   top: 770px;
