@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import "./LandingPage.css";
 
@@ -43,7 +44,11 @@ const getKitchenBackground = () => {
   );
 };
 
-function LandingPage() {
+function LandingPage({ setIsLanding }) {
+  const switchLink = () => {
+    setIsLanding(false);
+  };
+
   return (
     <>
       {getKitchenBackground()}
@@ -74,7 +79,11 @@ function LandingPage() {
         </div>
       </div>
 
-      <Button className="StartBtn">Start Cooking!</Button>
+      <Link to="/photoUpload">
+        <Button className="StartBtn" onClick={switchLink}>
+          Start Cooking!
+        </Button>
+      </Link>
     </>
   );
 }

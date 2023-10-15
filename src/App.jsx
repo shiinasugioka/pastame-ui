@@ -11,20 +11,19 @@ import "./App.css";
 const App = () => {
   const [circleState, setCircleState] = useState(0);
   const [file, setFile] = useState([]);
-
-  const isLandingPage = location.pathname === "/";
+  const [isLanding, setIsLanding] = useState(location.pathname === "/");
 
   return (
     <Router>
-      {!isLandingPage && (
+      {!isLanding && (
         <NavBar
           onMenuOpen={() => setCircleState(4)}
           onMenuClose={() => setCircleState(0)}
         />
       )}
-      {!isLandingPage && <GreenCircle state={circleState} />}
+      {!isLanding && <GreenCircle state={circleState} />}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage setIsLanding={setIsLanding}/>} />
         <Route
           path="/photoUpload"
           element={<PhotoUploadPage file={file} setFile={setFile} />}
