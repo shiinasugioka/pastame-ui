@@ -62,7 +62,9 @@ function LandingPage() {
         </div>
 
         <div className="row-container">
-          <p className="row-text row-text-two">Get recommended recipes based on your available ingredients</p>
+          <p className="row-text row-text-two">
+            Get recommended recipes based on your available ingredients
+          </p>
           <p className="two number">2</p>
         </div>
 
@@ -72,9 +74,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <Button className="StartBtn">
-        Start Cooking!
-      </Button>
+      <Button className="StartBtn">Start Cooking!</Button>
     </>
   );
 }
