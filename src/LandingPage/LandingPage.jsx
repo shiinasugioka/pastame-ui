@@ -44,34 +44,37 @@ const getKitchenBackground = () => {
 };
 
 function LandingPage() {
+  const [count, setCount] = useState(0);
+  const [file, setFile] = useState(null);
+
+  const onFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const onUpload = async () => {
+    const formData = new FormData();
+    formData.append("imgfile", file);
+
+    try {
+      const response = await axios.post("http://localhost:8080/upload", formData);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
   return (
     <>
-      {getKitchenBackground()}
-
-      <Button>
-        PastaMe
-        <img src="../../public/images/pasta-logo.png" className="pasta-logo" />
-      </Button>
-
-      <div className="text-container">
-        <p className="header-textbox">How to use</p>
-
-        <div className="row-container">
-          <p className="one number">1</p>
-          <p className="row-text">Upload photos of your ingredients</p>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+        <div>
+          <input type="file" id="imgfile" onChange={onFileChange} />
+          <button id="submit-btn" onClick={onUpload}>
+            Start Cooking
+          </button>
         </div>
-
-        <div className="row-container">
-          <p className="row-text" class="text-end">
-            Get recommended recipes based on your available ingredients
-          </p>
-          <p className="two number">2</p>
-        </div>
-
-        <div className="row-container">
-          <p className="three number">3</p>
-          <p className="row-text">Pick your recipe and Cook!</p>
-        </div>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
       </div>
     </>
   );
