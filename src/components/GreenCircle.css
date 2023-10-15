@@ -1,0 +1,8 @@
+.greenCircle {
+    position: absolute;
+    width: 100%;
+    background-color: #104D0A;
+    border-radius: 50%;
+    z-index: -1; /* This will layer the circle underneath other components */
+  }
+  
