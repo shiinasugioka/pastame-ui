@@ -21,6 +21,7 @@ const NavBar = ({ onMenuOpen, onMenuClose }) => {
       setIsOpen(false);
       onMenuClose(); // Call the function passed as a prop
     };
+    console.log(isOpen)
   
     return (
         <nav className="navbar">
@@ -31,7 +32,7 @@ const NavBar = ({ onMenuOpen, onMenuClose }) => {
             )}
           
             <div className={`navbar__logo ${isOpen ? 'move-left' : ''}`} onClick={closeMenu}>PastaMe</div>
-
+            
             {isOpen && (
                 <div className={`navbar__menu ${isOpen ? 'open' : ''}`} >
                     <ul onClick={closeMenu}>

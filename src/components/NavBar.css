@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-
- @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
- .navbar {
-    z-index: 1;
+.navbar {
+    z-index: 2;
     margin-top: 20px;
+    margin-left: 20px;
     position: fixed; /* Make the navbar fixed */
     top: 0; /* Position it at the top */
     width: 100%; /* Full width */
@@ -12,6 +11,7 @@
     color: #FFBD13;
     display: flex;
     justify-content: space-between; /* Change this line */
+    max-width: 100vw;
 }
 
 .navbar__menu {
@@ -36,9 +36,25 @@
     width: 100%;
     height: auto;
 }
+/* 
+.navbar__logo {
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: 10rem;
+    transition: all 0.3s ease-in-out;
+    font-size: 30px; 
+}
+
+.navbar__logo.move-left {
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+} */
 
 .navbar__logo {
-    /* margin-top: 10px; */
+    margin-top: 10px;
     margin-right: auto;
     margin-left: 10rem;
     transition: all 0.3s ease-in-out;
@@ -47,69 +63,62 @@
 
 .navbar__logo.move-left {
     transition: all 0.3s ease-in-out;
-    position: absolute;
+    position: fixed; /* Change from absolute to fixed */
     left: 0;
     margin-left: 10px;
 }
+
 
 .navbar__menu ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0;
     margin: 0;
     margin-top: 30px; /* Add space at the top */
-    margin-right: -150px;
 }
-/* .navbar__menu ul li img{
-    padding-right: 10px;
-} */
-/* .navbar__menu li {
-    padding: 15px; 
-    color: #FFBD13; 
-} */
+
 .navbar__menu li {
     display: flex; /* Align items side by side */
     align-items: center; /* Center items vertically */
     padding: 10px; /* Space out list elements */
-    color: #FFBD13; /* Change text color to yellow */
 }
 
 .navbar__menu li img {
     margin-right: 10px; /* Add some space between the image and the text */
 }
 
-
 .navbar__menu li a {
-
     color: #FFBD13; /* Change link color to yellow */
-    text-decoration: none; /* Remove underline from links */
 }
 
-
-
-
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+   from {opacity: 0;}
+   to {opacity: 1;}
 }
 
 .navbar__menu li {
-    animation-name: fadeIn;
-    animation-duration: 200ms;
-    animation-fill-mode: both;
+   animation-name: fadeIn;
+   animation-duration: .2s;
+   animation-fill-mode:both;
 }
 
-.navbar__menu li:nth-child(1) {
-    animation-delay: 100ms;
+.navbar__menu li:nth-child(1) {animation-delay:.1s;}
+.navbar__menu li:nth-child(2) {animation-delay:.2s;}
+.navbar__menu li:nth-child(3) {animation-delay:.25s;}
+.navbar__menu li:nth-child(4) {animation-delay:.3s;}
+
+/* Media queries for different screen sizes */
+
+@media only screen and (max-width : 320px) {
+   .navbar__logo {font-size :20px;}
+   .navbar__hamburger {width :40px;}
 }
 
-.navbar__menu li:nth-child(2) {
-    animation-delay: 200ms;
+@media only screen and (min-width :321px) and (max-width :480px) {
+   .navbar__logo {font-size :25px;}
+   .navbar__hamburger {width :45px;}
 }
 
-.navbar__menu li:nth-child(3) {
-    animation-delay: 250ms;
-}
-
-.navbar__menu li:nth-child(4) {
-    animation-delay: 300ms;
+@media only screen and (min-width :481px) and (max-width :768px) {
+   .navbar__logo {font-size :30px;}
+   .navbar__hamburger {width :50px;}
 }
