@@ -1,9 +1,7 @@
 import axios from "axios";
-// import { useContext, useState } from "react";
 import { useState } from "react";
 import { BiSolidTrash } from "react-icons/bi";
 import ImageUploading from "react-images-uploading";
-// import { QueryContext } from "../App";
 import "./PhotoUploadPage.css";
 import Spinner from "../components/Spinner";
 
@@ -11,7 +9,6 @@ function PhotoUploadPage() {
   const maxNumber = 10;
   const [file, setFile] = useState([]);
   const [isBusy, setBusy] = useState(false);
-  // const { query, setQuery } = useContext(QueryContext);
 
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
@@ -29,10 +26,7 @@ function PhotoUploadPage() {
         let queryStr = JSON.stringify(res.data);
         console.log("Response:", queryStr.slice(1, queryStr.length - 1));
 
-        window.sessionStorage.setItem(
-          "query",
-          queryStr.slice(1, queryStr.length - 1).replace(/"/g, "")
-        );
+        window.sessionStorage.setItem("query", queryStr.slice(1, queryStr.length - 1).replace(/"/g, ""));
         window.location.href = "/recipe";
         setBusy(false);
       });
@@ -43,29 +37,10 @@ function PhotoUploadPage() {
 
   const imageUploadBtn = () => {
     return (
-      <ImageUploading
-        multiple
-        value={file}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-        acceptType={["jpg"]}
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          // write your building UI
+      <ImageUploading multiple value={file} onChange={onChange} maxNumber={maxNumber} dataURLKey="data_url" acceptType={["jpg", "jpeg", "png", "gif", "bmp", "tiff", "webp"]}>
+        {({ imageList, onImageUpload, onImageRemove, isDragging, dragProps }) => (
           <div className="upload__image-wrapper">
-            <button
-              style={isDragging ? { color: "red" } : null}
-              onClick={onImageUpload}
-              {...dragProps}
-              className="upload-btn"
-            >
+            <button style={isDragging ? { color: "red" } : null} onClick={onImageUpload} {...dragProps} className="upload-btn">
               <span className="material-symbols-outlined">upload</span>
               <div className="upload-btn-text">Upload Photos Here</div>
             </button>
@@ -77,10 +52,7 @@ function PhotoUploadPage() {
                 <div key={index} className="image-item">
                   <img src={image.data_url} alt="" width="150" />
                   <div className="image-item__btn-wrapper">
-                    <button
-                      className="image-btn"
-                      onClick={() => onImageRemove(index)}
-                    >
+                    <button className="image-btn" onClick={() => onImageRemove(index)}>
                       <BiSolidTrash color="white" size="20px"></BiSolidTrash>
                     </button>
                   </div>
@@ -112,9 +84,7 @@ function PhotoUploadPage() {
         <Spinner />
       ) : (
         <div>
-          <p className="inst-text">
-            Please upload an image of each of your ingredients separately below.
-          </p>
+          <p className="inst-text">Please upload an image of each of your ingredients separately below.</p>
 
           {imageUploadBtn()}
           {submitBtn()}
