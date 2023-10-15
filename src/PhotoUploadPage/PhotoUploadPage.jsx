@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 import axios from "axios";
 import { useContext, useState } from "react";
 import ImageUploading from "react-images-uploading";
 import "./PhotoUploadPage.css";
 import { QueryContext } from "../App";
+=======
+import "./PhotoUploadPage.css";
+import { Grid } from "@mui/material";
+import ImageUploading from "react-images-uploading";
+import { BiSolidTrash } from "react-icons/bi";
+import { LiaRedoAltSolid } from "react-icons/lia";
+import axios from "axios";
+>>>>>>> main
 
 function PhotoUploadPage() {
   const maxNumber = 10;
@@ -34,16 +43,8 @@ function PhotoUploadPage() {
     }
   };
 
-  return (
-    <>
-      <div className="card">
-        <div>
-          <button id="submit-btn" onClick={onUpload}>
-            Start Cooking
-          </button>
-        </div>
-      </div>
-
+  const imageUploadBtn = () => {
+    return (
       <ImageUploading
         multiple
         value={file}
@@ -67,28 +68,56 @@ function PhotoUploadPage() {
               style={isDragging ? { color: "red" } : null}
               onClick={onImageUpload}
               {...dragProps}
+              className="upload-btn"
             >
-              Click or Drop here
+              <span className="material-symbols-outlined">upload</span>
+              <div className="upload-btn-text">Upload Photos Here</div>
             </button>
-            &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image.data_url} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+
+            <p className="yourIngredients">Your Ingredients</p>
+
+            <div className="photo-grid">
+              {imageList.map((image, index) => (
+                <div key={index} className="image-item">
+                  <img src={image.data_url} alt="" width="150" />
+                  <div className="image-item__btn-wrapper">
+                    <button
+                      className="image-btn"
+                      onClick={() => onImageRemove(index)}
+                    >
+                      <BiSolidTrash color="white" size="20px"></BiSolidTrash>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </ImageUploading>
-      <div>
-        <button id="submit-btn" onClick={onUpload}>
-          Start Cooking
-        </button>
+    );
+  };
+
+  // dev test remove when done
+  const submitBtn = () => {
+    return (
+      <div className="footer">
+        <div>
+          <button className="submit-btn" onClick={onUpload}>
+            Start Cooking!
+          </button>
+        </div>
       </div>
+    );
+  };
+
+  return (
+    <>
+      <p className="inst-text">
+        Please upload an image of each of your ingredients separately below.
+      </p>
+
+      {imageUploadBtn()}
+      {submitBtn()}
     </>
   );
 }
