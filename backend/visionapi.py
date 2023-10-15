@@ -13,5 +13,10 @@ image.source.image_uri = image_url
 
 response = client.label_detection(image=image)
 
+highest = {'label': '', 'score': 0}
 for label in response.label_annotations:
-    print({'label': label.description, 'score': label.score})
+    # print({'label': label.description, 'score': label.score})
+    if label.score > highest['score']:
+        highest = {'label': label.description, 'score': label.score}
+
+print(highest['label'])
