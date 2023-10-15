@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import "./GeneratedRecipesPage.css";
 
-function GeneratedRecipesPage() {
-  const [file, setFile] = useState(null);
+function GeneratedRecipesPage({file, setFile}) {
+  // const [file, setFile] = useState(null);
 
   const onUpload = async () => {
     const formData = new FormData();
