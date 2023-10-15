@@ -68,6 +68,7 @@ function GeneratedRecipesPage() {
                 }}
               >
                 <img src="images/empty.png" alt="boiling pasta" />
+                <h4>No recipe results found</h4>
                 <p>Hmm... try another set of ingredients</p>
                 <Link to="/photoUpload">
                   <button className="submit-btn">Go back</button>

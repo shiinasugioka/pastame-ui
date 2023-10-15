@@ -2,11 +2,19 @@
   max-width: 200px;
 }
 
+.empty-state h4 {
+  color: rgb(75, 75, 75);
+  line-height: 1.6rem;
+  margin-top: .8rem;
+  width: 250px;
+}
+
 .empty-state p {
   color: gray;
   font-size: 16px;
-  line-height: 1.4rem;
-  margin-top: .8rem;
+  line-height: 1.3rem;
+  margin-top: .2rem;
+  margin-bottom: 1.9rem;
 }
 
 .recipe-grid {
