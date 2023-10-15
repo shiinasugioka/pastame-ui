@@ -3,6 +3,7 @@ import express from "express";
 import multer from "multer";
 import cors from "cors";
 import { Storage } from "@google-cloud/storage";
+import { exec } from "child_process";
 
 const app = express();
 app.use(cors());
@@ -43,8 +44,19 @@ app.post("/upload", upload.single("imgfile"), (req, res) => {
         console.log(err);
       });
       blobStream.on("finish", () => {
-        let publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
-        res.status(200).send(publicUrl);
+        console.log("blob.name", blob.name);
+        exec(`python3 visionapi.py https://storage.googleapis.com/${bucket.name}/${blob.name}`, (error, stdout, stderr) => {
+          if (error) {
+            console.error(`Error executing Python script: ${error}`);
+            res.status(500).send("Error processing image");
+            return;
+          }
+          console.log(`VisionAPI Output: ${stdout}`);
+          res.status(200).send("Success");
+        });
+
+        // let publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+        // res.status(200).send(publicUrl);
         // res.status(200).send("Success");
       });
       blobStream.end(req.file.buffer);
