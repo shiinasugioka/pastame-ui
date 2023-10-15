@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .navbar {
-    position: relative; /* Make sure this is relative */
+    position: relative;
     font-family: 'Fredoka One', cursive;
     color: #FFBD13;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .navbar__menu {
-    position: absolute; /* Add this */
-    top: 100%; /* Add this */
-    left: 0; /* Add this */
+    position: absolute;
+    top: 100%;
+    left: 0;
     transition: all 0.3s ease-in-out;
 }
 
@@ -22,3 +22,96 @@
 .navbar__hamburger {
     cursor: pointer;
 }
+
+.navbar__logo {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__logo.move-left {
+    margin-right: 200px; 
+} */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.navbar {
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    font-family: 'Fredoka One', cursive;
+    color: #FFBD13;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__menu.open {
+    transform: scale(1.2);
+}
+
+.navbar__hamburger {
+    cursor: pointer;
+    width: 50px;
+}
+
+.navbar__logo {
+    transition: all 0.3s ease-in-out;
+    font-size: 24px; 
+}
+
+.navbar__logo.move-left {
+    position: absolute;
+    left: 0;
+}
+ */
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+ .navbar {
+    position: fixed; /* Make the navbar fixed */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Full width */
+    font-family: 'Fredoka One', cursive;
+    color: #FFBD13;
+    display: flex;
+    justify-content: space-between; /* Change this line */
+}
+
+.navbar__menu {
+    position: absolute;
+    margin-top: 50px;
+    top: 100%;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar__menu.open {
+    transform: scale(1.2);
+}
+
+.navbar__hamburger {
+    cursor: pointer;
+    width: 50px; /* Adjust this value to your liking */
+}
+
+.navbar__logo {
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: 10rem;
+    transition: all 0.3s ease-in-out;
+    font-size: 30px; /* Adjust this value to your liking */
+}
+
+.navbar__logo.move-left {
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+}
+
