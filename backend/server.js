@@ -32,44 +32,68 @@ app.get("/", (req, res) => {
 });
 
 app.post("/upload", upload.array("imgfile"), (req, res) => {
-  console.log("uploading");
-  console.log("Files: ", req.files);
+  console.log("Uploading files...");
+  // console.log("Files: ", req.files);
+
   const responses = [];
+  let ingredients = [];
 
   if (!req.files || req.files.length === 0) {
     res.status(400).send("No file uploaded.");
     return;
   }
 
-  req.files.forEach((file) => {
-    try {
+  const filePromises = req.files.map((file) => {
+    return new Promise((resolve, reject) => {
       const randomId = v4();
       let blob = bucket.file(file.originalname + "-" + randomId);
       let blobStream = blob.createWriteStream();
-      console.log("Bucket info: ", bucket.name, blob.name);
+      // console.log("Bucket info: ", bucket.name, blob.name);
+
       blobStream.on("error", (err) => {
         console.log(err);
+        reject(err);
       });
 
       blobStream.on("finish", () => {
-        console.log("blob.name", blob.name);
-        exec(`python3 visionapi.py https://storage.googleapis.com/${bucket.name}/${blob.name}`, (error, stdout, stderr) => {
-          if (error) {
-            console.error(`Error executing Python script: ${error}`);
-            res.status(500).send("Error processing image");
-            return;
+        // console.log("blob.name", blob.name);
+        exec(
+          `python3 visionapi.py https://storage.googleapis.com/${bucket.name}/${blob.name}`,
+          (error, stdout, stderr) => {
+            if (error) {
+              console.error(`Error executing Python script: ${error}`);
+              reject(error);
+            }
+            // console.log(`VisionAPI Output: ${stdout}`);
+
+            const lines = stdout
+              .replace(/'/g, '"')
+              .split("\n")
+              .filter((line) => line.trim() !== "");
+
+            const jsonArrayString = `[${lines.join(",")}]`;
+
+            const jsonData = JSON.parse(jsonArrayString);
+            responses.push(jsonData);
+            ingredients = responses.map((r) => r.map((r) => r.label)).flat();
+            // console.log("responses: ", ingredients);
+            resolve();
           }
-          //   console.log(`VisionAPI Output: ${stdout}`);
-          responses.push({ file: file.originalname, status: "success", message: stdout });
-          console.log("responses: ", responses);
-        });
+        );
       });
       blobStream.end(file.buffer);
-    } catch (error) {
-      console.log(error);
-    }
+    });
   });
+
+  Promise.all(filePromises)
+    .then(() => {
+      res.send(ingredients);
+    })
+    .catch((error) => {
+      res.status(500).send("Error processing image");
+    });
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

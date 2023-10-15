@@ -1,12 +1,17 @@
-import "./PhotoUploadPage.css";
-import { Grid } from "@mui/material";
-import ImageUploading from "react-images-uploading";
-import { BiSolidTrash } from "react-icons/bi";
-import { LiaRedoAltSolid } from "react-icons/lia";
 import axios from "axios";
+// import { useContext, useState } from "react";
+import { useState } from "react";
+import { BiSolidTrash } from "react-icons/bi";
+import ImageUploading from "react-images-uploading";
+// import { QueryContext } from "../App";
+import "./PhotoUploadPage.css";
+import Spinner from "../components/Spinner";
 
-function PhotoUploadPage({ file, setFile }) {
+function PhotoUploadPage() {
   const maxNumber = 10;
+  const [file, setFile] = useState([]);
+  const [isBusy, setBusy] = useState(false);
+  // const { query, setQuery } = useContext(QueryContext);
 
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
@@ -19,11 +24,18 @@ function PhotoUploadPage({ file, setFile }) {
       formData.append(`imgfile`, f.file);
     });
     try {
-      const response = await axios.post(
-        "http://localhost:8080/upload",
-        formData
-      );
-      console.log("Response:", response.data);
+      setBusy(true);
+      await axios.post("http://localhost:8080/upload", formData).then((res) => {
+        let queryStr = JSON.stringify(res.data);
+        console.log("Response:", queryStr.slice(1, queryStr.length - 1));
+
+        window.sessionStorage.setItem(
+          "query",
+          queryStr.slice(1, queryStr.length - 1).replace(/"/g, "")
+        );
+        window.location.href = "/recipe";
+        setBusy(false);
+      });
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -42,8 +54,6 @@ function PhotoUploadPage({ file, setFile }) {
         {({
           imageList,
           onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
           onImageRemove,
           isDragging,
           dragProps,
@@ -98,12 +108,18 @@ function PhotoUploadPage({ file, setFile }) {
 
   return (
     <>
-      <p className="inst-text">
-        Please upload an image of each of your ingredients separately below.
-      </p>
+      {isBusy ? (
+        <Spinner />
+      ) : (
+        <div>
+          <p className="inst-text">
+            Please upload an image of each of your ingredients separately below.
+          </p>
 
-      {imageUploadBtn()}
-      {submitBtn()}
+          {imageUploadBtn()}
+          {submitBtn()}
+        </div>
+      )}
     </>
   );
 }
