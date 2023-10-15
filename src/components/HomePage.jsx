@@ -5,7 +5,9 @@ function HomePage() {
         <div>
     
             <h1>Pasta Pasta Pasta!</h1>
-            <p>Pasta</p>
+            <p>PastaPastaPastaPastaPastaPasta</p>
+            <p>PastaPastaPastaPastaPastaPastaPastaPastaPastaPastaPastaPastaPasta</p>
+            
         </div>
     );
 }
