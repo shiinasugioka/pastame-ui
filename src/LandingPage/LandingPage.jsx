@@ -48,7 +48,7 @@ function LandingPage() {
     <>
       {getKitchenBackground()}
 
-      <Button>
+      <Button className="LogoBtn">
         PastaMe
         <img src="../../public/images/pasta-logo.png" className="pasta-logo" />
       </Button>
@@ -62,7 +62,7 @@ function LandingPage() {
         </div>
 
         <div className="row-container">
-          <p className="row-text" class="text-end">Get recommended recipes based on your available ingredients</p>
+          <p className="row-text row-text-two">Get recommended recipes based on your available ingredients</p>
           <p className="two number">2</p>
         </div>
 
@@ -70,8 +70,11 @@ function LandingPage() {
           <p className="three number">3</p>
           <p className="row-text">Pick your recipe and Cook!</p>
         </div>
-
       </div>
+
+      <Button className="StartBtn">
+        Start Cooking!
+      </Button>
     </>
   );
 }

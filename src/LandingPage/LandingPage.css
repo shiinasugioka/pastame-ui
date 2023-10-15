@@ -14,7 +14,7 @@ body {
   transform: translateX(-50%);
 }
 
-.btn {
+.LogoBtn {
   /* text */
   font-family: "Fredoka", sans-serif;
   color: #ffbd13;
@@ -22,6 +22,7 @@ body {
 
   /* button */
   border-radius: 50px 50px 50px 50px;
+  border: none;
   width: 300px;
   height: 60px;
   background-color: #104d0a;
@@ -48,7 +49,7 @@ body {
   z-index: 1;
 
   position: absolute;
-  top: 390px;
+  top: 400px;
 }
 
 .header-textbox {
@@ -56,7 +57,7 @@ body {
   padding: 0;
   margin: 0;
   margin-left: 30px;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 500;
   text-align: left;
 }
@@ -65,18 +66,57 @@ body {
   display: flex;
   flex-direction: row;
   padding: 0;
-  padding-top: 30px;
+  padding-left: 30px;
+  height: 110px;
 }
 
 .number {
   font-family: "Dongle", sans-serif;
-  font-size: 80px;
+  font-size: 150px;
+  color: #899b87;
   margin: 0;
   padding: 0;
+  line-height: 140px;
 }
 
 .row-text {
-   margin: 0;
-   padding: 0;
-   text-align: left;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 270px;
+  height: min-content;
+  font-size: 18px;
+
+  margin-left: 15px;
+  margin-top: 40px;
+}
+
+.row-text-two {
+  text-align: right;
+  margin: 0px;
+  margin-top: 25px;
+  padding-right: 20px;
+}
+
+.StartBtn {
+  /* text */
+  font-family: "Fredoka", sans-serif;
+  color: #104d0a;
+  font-size: 25px;
+
+  /* button */
+  border-radius: 10px 10px 10px 10px;
+  border: none;
+  width: 370px;
+  height: 60px;
+  background-color: #ffbd13;
+  box-shadow: 0px 2px 1px #939393;
+
+  position: absolute;
+  top: 770px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 0;
+  z-index: 1;
 }
